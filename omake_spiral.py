@@ -51,6 +51,9 @@ def plot_spiral(fig, ax, sp, color):
     # plt.scatter(theta, r)
 
 def make_spiral_3d(A, theta_max, theta_step, zmax):
+    '''
+    this will be the description for this function
+    '''
     theta, r = make_spiral(2.0, 20*pi, pi/120, 0.0)
     z = np.linspace(-zmax, zmax, theta.size)
     r = r * np.sqrt(1 - z*z/zmax**2)
