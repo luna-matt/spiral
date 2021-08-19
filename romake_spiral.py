@@ -6,7 +6,7 @@ from math import sqrt, pi, sin, cos
 import numpy as np
 
 golden = (1 + sqrt(5.0)) / 2
-MAXTHETA=4500*pi
+MAXTHETA=4500.02*pi
 
 def main():
     fig, axes = prep_plots()
@@ -77,7 +77,7 @@ def plot_spiral_3d(fig, ax3d, sp3d, color):
     x = r*np.cos(theta)
     y = r*np.sin(theta)
     print(theta, r, z)
-    ax3d.scatter(x, y, z, c='red', marker='o')
+    ax3d.scatter(x, y, z, c='green', marker='.')
 
     
 if __name__ == '__main__':
