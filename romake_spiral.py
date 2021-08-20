@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+#Luna Matti 08/2021
+
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting 
 from math import sqrt, pi, sin, cos
@@ -11,6 +13,7 @@ MAXTHETA=4500.02*pi
 def main():
     fig, axes = prep_plots()
     fig.set_size_inches(5, 10)
+    #asks for input regarding seed angle
     d = float(input('Set angle in degrees:'))
     theta_step = d* np.pi/180
     #s1 = make_spiral(2.0, MAXTHETA,theta_step, 0.0)
@@ -22,6 +25,7 @@ def main():
     plt.show()
     
 def make_spiral(A, theta_max, theta_step, theta_offset):
+    #creates the negative and positive reflections in 2d
     thetaBottom = np.arange(0, theta_max/2, theta_step)
     thetaTop = np.arange(theta_max/2, theta_max, theta_step)
     rBottom = np.empty(thetaBottom.size)
@@ -34,6 +38,7 @@ def make_spiral(A, theta_max, theta_step, theta_offset):
     return (theta, r)
     
 def prep_plots():
+    #sets up the plot
     fig = plt.figure(figsize=plt.figaspect(2.))
     fig.suptitle('Fermat spirals in 2D and 3D')
     '''
@@ -45,17 +50,9 @@ def prep_plots():
     ax3d.set_title("A 3D Fermat spiral", va='bottom')
     return fig, (ax3d)
 
-def plot_spiral(fig, ax, sp, color):
-    r = sp[1]
-    # ax.set_ylim(r.min(), r.max())
-    theta, r = sp
-    # ax.plot(theta, r, color=color)
-    ax.scatter(theta, r, color=color)
-    ax.set_rmax(r.max())
-    #print(len(theta), len(r))
-    #plt.scatter(theta, r)
 
 def make_spiral_3d(A, theta_max, theta_step, zmax):
+    #establishes z axis
     global MAXTHETA
     theta, r = make_spiral(2.0, MAXTHETA, theta_step, 0.0)
     z = np.linspace(-zmax,zmax , theta.size)
@@ -73,6 +70,7 @@ else:
     return (theta, r, z)
 
 def plot_spiral_3d(fig, ax3d, sp3d, color):
+    #converts from polar to cartesian coordinates and plots points along spiral
     (theta, r, z) = sp3d
     x = r*np.cos(theta)
     y = r*np.sin(theta)
